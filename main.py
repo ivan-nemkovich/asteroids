@@ -2,8 +2,6 @@ import pygame
 from constants import (
     SCREEN_HEIGHT,
     SCREEN_WIDTH,
-    PLAYER_RADIUS,
-    LINE_WIDTH,
 )
 from logger import log_state
 from player import Player
@@ -22,9 +20,12 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+        player.update(dt)
         screen.fill("black")
         player.draw(screen)
         pygame.display.flip()
+
+        # limit the framerate to 60 FPS
         dt = clock.tick(60) / 1000
             
     
